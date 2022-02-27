@@ -22,7 +22,7 @@ jobs:
         run: docker build -t azure-terraform-container .
 
       - name: Run the built image.
-        run: docker run --name test-container --entrypoint "/bin/sleep" -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro azdo-agent-linux 60
+        run: docker run --name test-container --entrypoint "/bin/sleep" -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro azure-terraform-container 60
 
       - name: Verify tools are accessible in the built image.
         run: docker exec --tty test-container env TERM=xterm terraform version
